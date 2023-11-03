@@ -5,6 +5,7 @@
 
 
 
+
 int KE::Application::_genericID = 0;
 KE::Application* KE::Application::_instance = nullptr;
 
@@ -110,6 +111,11 @@ KE::Entity* KE::Application::GetParent(AComponent* comp)
 std::vector<KE::Entity*> KE::Application::GetAllEntities()
 {
 	return _entities;
+}
+
+std::vector<KE::AComponent*> KE::Application::GetAllComponents()
+{
+	return _components;
 }
 
 

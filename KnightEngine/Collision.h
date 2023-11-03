@@ -1,12 +1,21 @@
 #pragma once
-#include "CCollider.h"
+#include <box2d/b2_fixture.h>
+
 namespace KE {
 	class Collision
 	{
 	protected:
-		CCollider* _colliderA;
-		CCollider* _colliderB;
+		b2Fixture* _colliderA;
+		b2Fixture* _colliderB;	
+
+	public:
+		Collision();
 		bool isCollide;
+		void SetColliderA(b2Fixture* col);
+		void SetColliderB(b2Fixture* col);
+
+		b2Fixture* GetColliderA();
+		b2Fixture* GetColliderB();
 	};
 }
 

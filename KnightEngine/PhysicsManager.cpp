@@ -7,7 +7,8 @@
 
 KE::PhysicsManager::PhysicsManager(): _gravity(0, 10.f), _world(_gravity)
 {
-
+	ColListener = new CollisionListener();
+	_world.SetContactListener(ColListener);
 }
 
 KE::PhysicsManager::~PhysicsManager()
@@ -46,5 +47,10 @@ void KE::PhysicsManager::PhysicsUpdate(float deltaTime)
 b2World* KE::PhysicsManager::GetWorld()
 {
 	return &_world;
+}
+
+KE::CollisionListener* KE::PhysicsManager::GetListerner()
+{
+	return ColListener;
 }
 

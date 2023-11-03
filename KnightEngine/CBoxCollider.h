@@ -12,6 +12,9 @@ namespace KE {
 	public:
 		virtual b2Shape* GetShape() override;
 		void SetSize(float sizeX, float sizeY);
+
+		virtual void BeginCollision(Collision* collision) override;
+		virtual void EndCollision(Collision* collision)override;
 	};
 }
 

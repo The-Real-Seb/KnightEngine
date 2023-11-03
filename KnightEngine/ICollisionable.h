@@ -1,12 +1,14 @@
 #pragma once
+class Collision;
 #include "Collision.h"
 
 namespace KE {
 	class ICollisionable
 	{
 	public:
-		virtual void BeginCollision(Collision* collision) = 0;
-		virtual void EndCollision(Collision* collision) = 0;
+		~ICollisionable() {}
+		virtual void BeginCollision(KE::Collision* collision) = 0;
+		virtual void EndCollision(KE::Collision* collision) = 0;
 	};
 }
 

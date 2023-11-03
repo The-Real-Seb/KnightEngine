@@ -1,10 +1,12 @@
 #pragma once
 #include "AComponent.h"
 #include "box2d/b2_fixture.h"
-#include "box2d/b2_body.h"
+#include "Collision.h"
+#include "ICollisionable.h"
+
 
 namespace KE {
-	class CCollider : public AComponent
+	class CCollider : public AComponent, public ICollisionable
 	{
 	protected:
 		b2Fixture* _fixture;
@@ -14,6 +16,9 @@ namespace KE {
 		virtual b2Shape* GetShape();
 		void SetDensity(float density);
 		void SetFriction(float friction);
+		
+		virtual void BeginCollision(Collision* collision);		
+		virtual void EndCollision(Collision* collision);
 	};
 }
 
