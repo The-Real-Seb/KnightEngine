@@ -9,9 +9,7 @@
 #include <KnightEngine/CBoxCollider.h>
 #include <KnightEngine/CCollider.h>
 #include <KnightEngine/Application.h>
-
-
-
+#include <KnightEngine/CScriptLua.h>
 
 int main()
 {
@@ -24,6 +22,9 @@ int main()
 
 	KE::CSpriteRenderer* cSpriteRenderer = app->AddComponent<KE::CSpriteRenderer>(entity1);
 	cSpriteRenderer->SetSprite(false, app->GetRessourceManager()->GetAssetPath("heart_sprite"), sf::Color::White);	
+
+	KE::CScriptLua* scriptComp = app->AddComponent<KE::CScriptLua>(entity1);
+	scriptComp->SetScript("lua_test");
 
 	KE::CRigidbody* cRigidBody = app->AddComponent<KE::CRigidbody>(entity1);
 	KE::CBoxCollider* cBox = app->AddComponent<KE::CBoxCollider>(entity1);

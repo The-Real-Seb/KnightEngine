@@ -7,6 +7,16 @@ KE::Entity::Entity()
 	_id = KE::Application::GetInstance()->GenerateID();
 }
 
+sf::Vector2f KE::Entity::GetPosition()
+{
+	return getPosition();
+}
+
+void KE::Entity::SetPosition(sf::Vector2f position)
+{
+	setPosition(position);
+}
+
 void KE::Entity::Awake()
 {	
 	components = KE::Application::GetInstance()->GetAllComponentsOf(this);

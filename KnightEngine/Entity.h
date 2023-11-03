@@ -1,5 +1,5 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+//#include <SFML/Graphics.hpp>
 #include <iostream>
 #include "AComponent.h"
 
@@ -26,6 +26,9 @@ namespace KE {
 		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 		Entity();
+
+		sf::Vector2f GetPosition();
+		void SetPosition(sf::Vector2f position);
 	};
 }
 

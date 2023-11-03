@@ -66,6 +66,9 @@
     <ClInclude Include="CollisionListener.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="CScriptLua.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="KnightEngine.cpp">
@@ -117,6 +120,9 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="CollisionListener.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CScriptLua.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
