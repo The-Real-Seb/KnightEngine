@@ -146,7 +146,7 @@
     <ClInclude Include="CCamera.h" />
     <ClInclude Include="CCircleShape.h" />
     <ClInclude Include="CCollider.h" />
-    <ClInclude Include="CGravity.h" />
+    <ClInclude Include="CInput.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="CollisionListener.h" />
     <ClInclude Include="CRigidbody.h" />
@@ -156,6 +156,7 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="ICollisionable.h" />
+    <ClInclude Include="LuaKeyboard.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="PhysicsManager.h" />
     <ClInclude Include="RessourceManager.h" />
@@ -166,7 +167,7 @@
     <ClCompile Include="CCamera.cpp" />
     <ClCompile Include="CCircleShape.cpp" />
     <ClCompile Include="CCollider.cpp" />
-    <ClCompile Include="CGravity.cpp" />
+    <ClCompile Include="CInput.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="CollisionListener.cpp" />
     <ClCompile Include="CRigidbody.cpp" />
@@ -176,6 +177,7 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="ICollisionable.cpp" />
     <ClCompile Include="KnightEngine.cpp" />
+    <ClCompile Include="LuaKeyboard.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

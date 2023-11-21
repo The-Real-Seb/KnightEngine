@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Fichiers sources\LuaWraper">
+      <UniqueIdentifier>{bd44b979-ab4b-4588-b081-5d07eef38444}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers d%27en-tête\LuaWraper">
+      <UniqueIdentifier>{4d572264-c49b-40f9-8d27-a84a4c467a31}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -28,9 +34,6 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="CGravity.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="CCircleShape.h">
@@ -69,6 +72,12 @@
     <ClInclude Include="CScriptLua.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="CInput.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="LuaKeyboard.h">
+      <Filter>Fichiers d%27en-tête\LuaWraper</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="KnightEngine.cpp">
@@ -84,9 +93,6 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="CGravity.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="CCircleShape.cpp">
@@ -124,6 +130,12 @@
     </ClCompile>
     <ClCompile Include="CScriptLua.cpp">
       <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CInput.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="LuaKeyboard.cpp">
+      <Filter>Fichiers sources\LuaWraper</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

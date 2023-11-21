@@ -2,6 +2,7 @@
 #include "AComponent.h"
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "Entity.h"
 
 namespace KE {
 	class CSpriteRenderer : public AComponent, public sf::Sprite
@@ -16,6 +17,7 @@ namespace KE {
 
 		void SetSprite();
 		void SetSprite(bool isSmooth, std::string path, sf::Color color);
+		void SetSprite(bool isSmooth, std::string path, sf::Color color, KE::Entity* entity);
 
 		void SetTexture(std::string path);
 		void SetColor(sf::Color color);

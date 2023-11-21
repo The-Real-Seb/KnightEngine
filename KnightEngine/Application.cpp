@@ -3,9 +3,6 @@
 #include "AComponent.h"
 #include "Entity.h"
 
-
-
-
 int KE::Application::_genericID = 0;
 KE::Application* KE::Application::_instance = nullptr;
 
@@ -14,6 +11,7 @@ KE::Application::Application()
 	_instance = this;
 	_ressourceManager = new RessourceManager();
 	_physicsManager = new PhysicsManager();
+	luaKeyboard = new LuaKeyboard();
 }
 
 KE::Application::~Application()
@@ -40,9 +38,11 @@ void KE::Application::UpdateLoop()
 	while (_window.isOpen())
 	{
 		float deltaTime = clock.restart().asSeconds();
-		sf::Event event;
+		sf::Event event;		
+
 		while (_window.pollEvent(event))
 		{
+			luaKeyboard->AddEvent(event);
 			if (event.type == sf::Event::Closed) {
 				_window.close();
 			}
@@ -64,6 +64,7 @@ void KE::Application::UpdateLoop()
 
 		DrawEntities(_window);
 		_window.display();
+		luaKeyboard->Clear();
 	}	
 }
 
@@ -94,6 +95,16 @@ KE::Entity* KE::Application::GetEntity(int id)
 	return nullptr;
 }
 
+KE::Entity* KE::Application::GetEntityByName(std::string name)
+{
+	for (Entity* entity : _entities) {
+		if (entity->GetName() == name) {
+			return entity;
+		}
+	}
+	return nullptr;
+}
+
 KE::Entity* KE::Application::GetParent(AComponent* comp)
 {
 	if (_link.contains(comp->GetID())) {
@@ -118,11 +129,9 @@ std::vector<KE::AComponent*> KE::Application::GetAllComponents()
 	return _components;
 }
 
-
 std::vector<KE::AComponent*> KE::Application::GetAllComponentsOf(KE::Entity* entity)
 {
-	std::vector<AComponent*> components;
-	std::cout << "Number of components: " << _components.size() << std::endl;
+	std::vector<AComponent*> components;	
 
 	for (AComponent* component : _components) 
 	{
@@ -133,14 +142,18 @@ std::vector<KE::AComponent*> KE::Application::GetAllComponentsOf(KE::Entity* ent
 	return components;
 }
 
-
-
 KE::Application* KE::Application::GetInstance()
 {
 	if (!_instance) {
 		_instance = new Application();
 	}
 	return _instance;
+}
+
+KE::CRigidbody* KE::Application::GetRigiBodyComponent(Entity* entity)
+{
+	std::cout << entity->GetName() << std::endl;
+	return GetComponent<KE::CRigidbody>(entity);
 }
 
 KE::RessourceManager* KE::Application::GetRessourceManager()

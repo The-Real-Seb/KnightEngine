@@ -16,6 +16,7 @@ namespace KE {
 		virtual b2Shape* GetShape();
 		void SetDensity(float density);
 		void SetFriction(float friction);
+		void SetIsTrigger(bool isTrigger);
 
 		b2Fixture* GetFixture();
 		

@@ -19,12 +19,18 @@ b2Shape* KE::CCollider::GetShape()
 
 void KE::CCollider::SetDensity(float density)
 {
-	_fixtureDef.density = density;
+	_fixtureDef.density = density;	
 }
 
 void KE::CCollider::SetFriction(float friction)
 {
 	_fixtureDef.friction = friction;
+}
+
+void KE::CCollider::SetIsTrigger(bool isTrigger)
+{
+	_fixtureDef.isSensor = isTrigger;
+	_fixture->SetSensor(isTrigger);
 }
 
 b2Fixture* KE::CCollider::GetFixture()

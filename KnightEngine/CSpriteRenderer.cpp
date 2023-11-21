@@ -1,6 +1,7 @@
 #include "CSpriteRenderer.h"
 #include "Application.h"
 
+
 KE::CSpriteRenderer::CSpriteRenderer():AComponent()
 {
 }
@@ -22,10 +23,29 @@ void KE::CSpriteRenderer::SetSprite(bool isSmooth, std::string path, sf::Color c
 	_texture.setSmooth(true);
 
 	_sprite.setOrigin(sf::Vector2f(_texture.getSize().x / 2, _texture.getSize().y / 2));
-	_sprite.setPosition(KE::Application::GetInstance()->GetParent(this)->getPosition());
+
+	KE::Entity* ent = KE::Application::GetInstance()->GetParent(this);
+	sf::Vector2f pos = ent->getPosition();
+
+	//_sprite.setPosition(pos);
 	_sprite.setScale(sf::Vector2f(0.1f, 0.1f));
 	_sprite.setTexture(_texture);
 	SetColor(color);	
+}
+
+void KE::CSpriteRenderer::SetSprite(bool isSmooth, std::string path, sf::Color color, KE::Entity* entity)
+{
+	SetTexture(path);
+	_texture.setSmooth(true);
+
+	_sprite.setOrigin(sf::Vector2f(_texture.getSize().x / 2, _texture.getSize().y / 2));
+
+	sf::Vector2f pos = entity->getPosition();
+
+	_sprite.setPosition(pos);
+	_sprite.setScale(sf::Vector2f(0.1f, 0.1f));
+	_sprite.setTexture(_texture);
+	SetColor(color);
 }
 
 void KE::CSpriteRenderer::SetTexture(std::string path)

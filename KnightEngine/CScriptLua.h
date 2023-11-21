@@ -14,6 +14,7 @@ namespace KE {
 		CScriptLua();
 		void SetScript(std::string assetID);
 		void Update(float deltaTime);
+		void Awake();
 	};
 }
 
