@@ -19,6 +19,8 @@ namespace KE {
 		b2World* GetWorld();
 
 		CollisionListener* GetListerner();
+
+		static inline const float ppm = 8.f;
 	};
 }
 

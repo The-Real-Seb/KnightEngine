@@ -9,7 +9,9 @@
 #include <KnightEngine/CCollider.h>
 #include <KnightEngine/Application.h>
 #include <KnightEngine/CScriptLua.h>
+#include <KnightEngine/CText.h>
 #include "Enemy.h"
+#include "EnemySpawner.h"
 
 int main()
 {
@@ -26,10 +28,23 @@ int main()
 	KE::Entity* player = app->CreateEntity();
 	player->SetName("player");
 	player->setPosition(0, 0);
+	
+	KE::Entity* score = app->CreateEntity();
+	score->SetName("score");
+	score->setPosition(0, 0);
+	score->setScale(sf::Vector2f(2.0f, 2.0f));
+
+	KE::CText* textComp = app->AddComponent<KE::CText>(score);
+	textComp->SetFont(app->GetRessourceManager()->GetAssetPath("fipps"));
+	std::cout << app->GetRessourceManager()->GetAssetPath("fipps") << std::endl;
+	textComp->SetString("Hello");
+	textComp->SetFillColor(sf::Color::White);
+	textComp->SetSize(5);
+	
 
 	KE::CSpriteRenderer* cSpriteRenderer = app->AddComponent<KE::CSpriteRenderer>(player);
 	//cSpriteRenderer->SetSprite(false, app->GetRessourceManager()->GetAssetPath("heart_sprite"), sf::Color::White);
-	cSpriteRenderer->SetSprite(false, app->GetRessourceManager()->GetAssetPath("carre"), sf::Color::White);
+	cSpriteRenderer->SetSprite(false, app->GetRessourceManager()->GetAssetPath("heart_sprite"), sf::Color::White);
 	player->setScale(sf::Vector2f(0.2f, 0.2f));
 
 	KE::CScriptLua* scriptComp = app->AddComponent<KE::CScriptLua>(player);
@@ -95,9 +110,10 @@ int main()
 	KE::CCamera* cCamera = app->AddComponent<KE::CCamera>(camera);
 	cCamera->SetView(sf::FloatRect(app->_window.getSize().x/2, app->_window.getSize().y / 2, 1250, 720));
 	//cCamera->SetViewport(sf::FloatRect(0, 0, 0.7, 0.7));
-	cCamera->SetZoom(app->_window.getSize().x, app->_window.getSize().y);
+	cCamera->SetZoom(app->_window.getSize().x/2, app->_window.getSize().y/2);	
 
-	Enemy* enemy = app->CreateSpecificEntity<Enemy>();
+	KE::Entity* enemySpawner = app->CreateEntity();
+	EnemySpawner* spawnerComponent = app->AddComponent<EnemySpawner>(enemySpawner);
 	
     app->Init();
 	

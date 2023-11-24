@@ -34,7 +34,7 @@ KE::CScriptLua::CScriptLua()
 		//.addProperty("position", &KE::Entity::GetPosition, &KE::Entity::SetPosition)
 		.addFunction("GetPosition", &KE::Entity::GetPosition)
 		.addFunction("SetPosition", &KE::Entity::SetPosition)
-		.addFunction("Update", &KE::Entity::Update)		
+		.addFunction("Update", &KE::Entity::Update)
 		.endClass()
 		.endNamespace();
 
@@ -58,14 +58,22 @@ KE::CScriptLua::CScriptLua()
 	luabridge::getGlobalNamespace(_luaState)
 		.beginNamespace("KnightEngine")
 		.beginClass <KE::CCollider> ("Collider")
+		//.addFunction("BeginCollision", &KE::CBoxCollider::BeginCollision)
+		//.addFunction("EndCollision", &KE::CBoxCollider::EndCollision)
+		.endClass()
+		.endNamespace();
+
+	luabridge::getGlobalNamespace(_luaState)
+		.beginNamespace("KnightEngine")
+		.beginClass <KE::Collision>("Collision")		
 		.endClass()
 		.endNamespace();
 
 	luabridge::getGlobalNamespace(_luaState)
 		.beginNamespace("KnightEngine")
 		.beginClass <KE::CBoxCollider>("BoxCollider")
-		.addFunction("BeginCollision", &KE::CBoxCollider::BeginCollision)
-		.addFunction("EndCollision", &KE::CBoxCollider::EndCollision)
+		//.addFunction("BeginCollision", &KE::CBoxCollider::BeginCollision)
+		//.addFunction("EndCollision", &KE::CBoxCollider::EndCollision)
 		.endClass()
 		.endNamespace();
 
@@ -113,6 +121,18 @@ void KE::CScriptLua::Awake()
 {
 	luabridge::LuaRef awake = luabridge::getGlobal(_luaState, "Awake");
 	luabridge::LuaResult result = awake();
+}
+
+void KE::CScriptLua::BeginCollision()
+{
+	luabridge::LuaRef beginCollision = luabridge::getGlobal(_luaState, "beginCollision");
+	luabridge::LuaResult result = beginCollision();
+}
+
+void KE::CScriptLua::EndCollision()
+{
+	luabridge::LuaRef endCollision = luabridge::getGlobal(_luaState, "endCollision");
+	luabridge::LuaResult result = endCollision();
 }
 
 void KE::CScriptLua::ReportErrors(lua_State* luaState, int status)

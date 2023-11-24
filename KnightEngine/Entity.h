@@ -26,6 +26,7 @@ namespace KE {
 		virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
 		Entity();
+		~Entity();
 
 		sf::Vector2f GetPosition();
 		void SetPosition(sf::Vector2f position);

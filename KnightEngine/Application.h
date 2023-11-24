@@ -44,7 +44,10 @@ namespace KE {
 		Entity* GetEntityByName(std::string name);
 		Entity* GetParent(AComponent* comp);
 		std::vector<Entity*> GetAllEntities();
-		std::vector<AComponent*> GetAllComponents();		
+		std::vector<AComponent*> GetAllComponents();
+
+		void DestroyEntity(Entity entityD);
+		void DestroyComponent(AComponent*);
 
 		template<typename T>
 		T* AddComponent(Entity* entity);

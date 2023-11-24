@@ -29,6 +29,7 @@ void KE::Application::Init()
 	for (Entity* entity : _entities)
 	{
 		entity->Awake();
+		entity->Start();
 	}
 }
 
@@ -50,8 +51,9 @@ void KE::Application::UpdateLoop()
 
 		_physicsManager->PhysicsUpdate(deltaTime);
 
-		for (Entity* entity : _entities)
+		for (int i = 0; i < _entities.size(); ++i)
 		{
+			Entity* entity = _entities[i];
 			entity->Update(deltaTime);
 		}
 
@@ -129,6 +131,41 @@ std::vector<KE::AComponent*> KE::Application::GetAllComponents()
 	return _components;
 }
 
+
+void KE::Application::DestroyEntity(Entity entityD)
+{
+	for (auto it = _entities.begin(); it != _entities.end(); )
+	{
+		if ((*it)->GetID() == entityD.GetID())
+		{
+			for (auto compIt = _components.begin(); compIt != _components.end(); )
+			{
+				if (_link.at((*compIt)->GetID()) == (*it)->GetID())
+				{
+					delete* compIt;
+					compIt = _components.erase(compIt);
+				}
+				else
+				{
+					++compIt;
+				}
+			}			
+			delete* it;
+			it = _entities.erase(it);
+		}
+		else
+		{
+			++it;
+		}
+	}
+
+	
+}
+
+void KE::Application::DestroyComponent(AComponent*)
+{
+}
+
 std::vector<KE::AComponent*> KE::Application::GetAllComponentsOf(KE::Entity* entity)
 {
 	std::vector<AComponent*> components;	
@@ -168,6 +205,7 @@ KE::PhysicsManager* KE::Application::GetPhysicsManager()
 
 void KE::Application::DrawEntities(sf::RenderTarget& target)
 {
+	
 	for (Entity* entity : _entities)
 	{
 		target.draw(*entity);

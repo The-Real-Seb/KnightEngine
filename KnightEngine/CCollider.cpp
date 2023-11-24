@@ -3,7 +3,7 @@
 #include "Application.h"
 #include "CRigidbody.h"
 #include "Collision.h"
-
+#include "CScriptLua.h"
 
 void KE::CCollider::SetFixture(b2Body* body)
 {
@@ -40,10 +40,25 @@ b2Fixture* KE::CCollider::GetFixture()
 
 void KE::CCollider::BeginCollision(Collision* collision)
 {
-	std::cout << "Begin Collision" << std::endl;
+	//std::cout << "Begin Collision" << std::endl;
+	KE::Application* app = KE::Application::GetInstance();
+
+	KE::CScriptLua* script = app->GetComponent<KE::CScriptLua>(app->GetParent(this));
+
+	if (script) {
+		script->BeginCollision();
+	}
+	
 }
 
 void KE::CCollider::EndCollision(Collision* collision)
 {
-	std::cout << "End Collision" << std::endl;
+	//std::cout << "End Collision" << std::endl;
+	KE::Application* app = KE::Application::GetInstance();
+
+	KE::CScriptLua* script = app->GetComponent<KE::CScriptLua>(app->GetParent(this));
+
+	if (script) {
+		script->EndCollision();
+	}
 }

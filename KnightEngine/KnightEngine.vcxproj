@@ -149,9 +149,11 @@
     <ClInclude Include="CInput.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="CollisionListener.h" />
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="CRigidbody.h" />
     <ClInclude Include="CScriptLua.h" />
     <ClInclude Include="CSpriteRenderer.h" />
+    <ClInclude Include="CText.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="framework.h" />
@@ -170,9 +172,11 @@
     <ClCompile Include="CInput.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="CollisionListener.cpp" />
+    <ClCompile Include="Constants.cpp" />
     <ClCompile Include="CRigidbody.cpp" />
     <ClCompile Include="CScriptLua.cpp" />
     <ClCompile Include="CSpriteRenderer.cpp" />
+    <ClCompile Include="CText.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="ICollisionable.cpp" />

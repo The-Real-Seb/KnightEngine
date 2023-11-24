@@ -3,12 +3,14 @@
 #include "Application.h"
 #include "Entity.h"
 #include "CRigidbody.h"
+#include "Constants.h"
 
 
 KE::PhysicsManager::PhysicsManager(): _gravity(0, 10.f), _world(_gravity)
 {
 	ColListener = new CollisionListener();
 	_world.SetContactListener(ColListener);
+	
 }
 
 KE::PhysicsManager::~PhysicsManager()
@@ -18,6 +20,7 @@ KE::PhysicsManager::~PhysicsManager()
 
 void KE::PhysicsManager::PhysicsUpdate(float deltaTime)
 {	
+	
 	std::vector<Entity*> entities;
 	entities = KE::Application::GetInstance()->GetAllEntities();
 
@@ -26,7 +29,7 @@ void KE::PhysicsManager::PhysicsUpdate(float deltaTime)
 		CRigidbody* rb = KE::Application::GetInstance()->GetComponent<CRigidbody>(entity);
 		if (rb != nullptr) {
 			
-			rb->SetBodyPosition(b2Vec2(entity->getPosition().x, entity->getPosition().y));					
+			rb->SetBodyPosition(b2Vec2(entity->getPosition().x / ppm, entity->getPosition().y / ppm));
 		}		
 	}
 		
@@ -37,7 +40,8 @@ void KE::PhysicsManager::PhysicsUpdate(float deltaTime)
 		CRigidbody* rb = KE::Application::GetInstance()->GetComponent<CRigidbody>(entity);
 		if (rb != nullptr) {
 			
-			entity->setPosition(sf::Vector2(rb->GetBodyPosition().x, rb->GetBodyPosition().y));
+			//std::cout << _world.DebugDraw() << std::endl;
+			entity->setPosition(sf::Vector2(rb->GetBodyPosition().x * ppm, rb->GetBodyPosition().y * ppm));
 			entity->setRotation(rb->GetBodyAngle());
 			
 		}

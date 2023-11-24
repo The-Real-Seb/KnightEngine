@@ -15,6 +15,9 @@ namespace KE {
 		void SetScript(std::string assetID);
 		void Update(float deltaTime);
 		void Awake();
+
+		void BeginCollision();
+		void EndCollision();
 	};
 }
 

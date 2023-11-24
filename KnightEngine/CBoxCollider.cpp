@@ -1,6 +1,7 @@
 #include "CBoxCollider.h"
 #include <SFML/System/Vector2.hpp>
 #include <iostream>
+#include "PhysicsManager.h"
 
 b2Shape* KE::CBoxCollider::GetShape()
 {
@@ -10,14 +11,15 @@ b2Shape* KE::CBoxCollider::GetShape()
 
 void KE::CBoxCollider::SetSize(float sizeX, float sizeY)
 {
-    _size = sf::Vector2f(sizeX, sizeY);
+    _size = sf::Vector2f(sizeX / PhysicsManager::ppm, sizeY / PhysicsManager::ppm);
 }
 
 void KE::CBoxCollider::BeginCollision(Collision* collision)
-{
-    std::cout << "Begin Box Collision" << std::endl;
+{    
+    CCollider::BeginCollision(collision);
 }
 
 void KE::CBoxCollider::EndCollision(Collision* collision)
 {
+    CCollider::EndCollision(collision);
 }

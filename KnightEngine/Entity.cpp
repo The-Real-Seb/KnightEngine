@@ -7,6 +7,11 @@ KE::Entity::Entity()
 	_id = KE::Application::GetInstance()->GenerateID();
 }
 
+KE::Entity::~Entity()
+{
+	
+}
+
 sf::Vector2f KE::Entity::GetPosition()
 {
 	return getPosition();

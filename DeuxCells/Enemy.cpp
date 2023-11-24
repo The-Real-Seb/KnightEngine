@@ -21,14 +21,16 @@ Enemy::Enemy()
 
 	rb->SetBodyType(b2BodyType::b2_dynamicBody);
 	rb->SetGravityScale(0);
+	rb->SetLinearDamping(0.f);
+	rb->GetBody()->SetBullet(true);
 	//rb->SetAngularDamping(10000);	
 
-	collider->SetDensity(0.f);
+	collider->SetDensity(0.1f);
 	collider->SetSize(10,15);
 	
 	collider->SetFixture(rb->GetBody());
 	collider->SetIsTrigger(true);
 	
 
-	this->SetPosition(sf::Vector2f(20, -100));	
+	this->SetPosition(sf::Vector2f(0, 0));	
 }
