@@ -7,6 +7,7 @@
 #include "PhysicsManager.h"
 #include "CRigidbody.h"
 #include "LuaKeyboard.h"
+#include "CText.h"
 
 namespace KE {
 	class Application
@@ -61,6 +62,7 @@ namespace KE {
 
 #pragma region Wrapper
 		CRigidbody* GetRigiBodyComponent(Entity* entity);
+		CText* GetTextComponent(Entity* entity);
 		
 #pragma endregion Wrapper
 

@@ -139,12 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\KnightEngine\BDDManager.cpp" />
     <ClCompile Include="DeuxCells.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyMovement.cpp" />
     <ClCompile Include="EnemySpawner.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\KnightEngine\BDDManager.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyMovement.h" />
     <ClInclude Include="EnemySpawner.h" />

@@ -35,6 +35,17 @@ void KE::CText::SetStyle(sf::Text::Style style)
 	_text.setStyle(style);
 }
 
+std::string KE::CText::SetFloatPrecision(float i)
+{
+	//float t = std::floorf((int)i * 100.) / 100.;
+
+	int t = (int)i;
+	int j = (int)((i - t)*10);
+	std::string text = std::to_string(t) + "," + std::to_string(j);	
+	return text;
+	
+}
+
 void KE::CText::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {	
 	target.draw(_text, states);	

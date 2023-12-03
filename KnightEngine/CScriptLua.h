@@ -18,6 +18,8 @@ namespace KE {
 
 		void BeginCollision();
 		void EndCollision();
+
+		
 	};
 }
 

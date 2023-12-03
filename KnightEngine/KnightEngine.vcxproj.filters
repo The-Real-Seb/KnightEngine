@@ -173,14 +173,14 @@
     <ClCompile Include="RessourceManager.cpp">
       <Filter>Fichiers sources\Systems</Filter>
     </ClCompile>
-    <ClCompile Include="CText.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="Entity.cpp">
       <Filter>Fichiers sources\Abstracts</Filter>
     </ClCompile>
     <ClCompile Include="Constants.cpp">
       <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="CText.cpp">
+      <Filter>Fichiers sources\Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

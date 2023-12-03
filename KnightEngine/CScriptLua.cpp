@@ -4,6 +4,8 @@
 #include "CBoxCollider.h"
 #include "CRigidbody.h"
 #include "CSpriteRenderer.h"
+#include "CText.h"
+#include "BDDManager.h"
 
 KE::CScriptLua::CScriptLua()
 {
@@ -12,7 +14,8 @@ KE::CScriptLua::CScriptLua()
 
 	luabridge::getGlobalNamespace(_luaState)
 		.beginNamespace("KnightEngine")
-		.beginClass<sf::Vector2f>("Vector2")		
+		.beginClass<sf::Vector2f>("Vector2")
+		.addConstructor<void (*) (void)>()
 		.addProperty("x", &sf::Vector2f::x)
 		.addProperty("y", &sf::Vector2f::y)
 		.endClass()
@@ -24,6 +27,20 @@ KE::CScriptLua::CScriptLua()
 		.addConstructor<void (*) (void)>()
 		.addProperty("x", &b2Vec2::x)
 		.addProperty("y", &b2Vec2::y)
+		.endClass()
+		.endNamespace();
+
+	luabridge::getGlobalNamespace(_luaState)
+		.beginNamespace("KnightEngine")
+		.beginClass < std::string > ("string")		
+		.endClass()
+		.endNamespace();
+
+	luabridge::getGlobalNamespace(_luaState)
+		.beginNamespace("KnightEngine")
+		.beginClass<KE::BDDManager>("BDD")
+		//.addStaticFunction("AddScore", &KE::BDDManager::SendDataToBDD)
+		//.addStaticFunction("GetScore", &KE::BDDManager::GetDataFromBDD)
 		.endClass()
 		.endNamespace();
 
@@ -46,6 +63,7 @@ KE::CScriptLua::CScriptLua()
 		.addFunction("GetEntityByName",  &KE::Application::GetEntityByName)
 		.addProperty("Keyboard", &KE::Application::luaKeyboard)
 		.addFunction("GetRigiBodyComponent", &KE::Application::GetRigiBodyComponent)
+		.addFunction("GetTextComponent", &KE::Application::GetTextComponent)		
 		.endClass()
 		.endNamespace();
 
@@ -55,6 +73,7 @@ KE::CScriptLua::CScriptLua()
 		.endClass()
 		.endNamespace();
 
+	
 	luabridge::getGlobalNamespace(_luaState)
 		.beginNamespace("KnightEngine")
 		.beginClass <KE::CCollider> ("Collider")
@@ -93,6 +112,14 @@ KE::CScriptLua::CScriptLua()
 		.addFunction("SetTexture", &KE::CSpriteRenderer::SetTexture)
 		.endClass()
 		.endNamespace();	
+
+	luabridge::getGlobalNamespace(_luaState)
+		.beginNamespace("KnightEngine")
+		.beginClass <KE::CText>("Text")
+		.addFunction("SetString", &KE::CText::SetString)
+		.addFunction("GetFloat", &KE::CText::SetFloatPrecision)
+		.endClass()
+		.endNamespace();
 
 	luabridge::getGlobalNamespace(_luaState)
 		.beginNamespace("KnightEngine")

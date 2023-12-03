@@ -41,8 +41,9 @@ void EnemySpawner::Spawn()
 	EnemyMovement* Emovement = app->GetComponent<EnemyMovement>(enemy);
 	
 
-	position.x = std::cos(std::rand()) * 300;
-	position.y = std::sin(std::rand()) * 200;
+	float random = std::rand();
+	position.x = std::cos(random) * 300;
+	position.y = std::sin(random) * 200;
 
 	enemy->SetPosition(position);
 

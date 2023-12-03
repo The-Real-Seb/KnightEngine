@@ -16,10 +16,10 @@ void KE::Collision::SetColliderB(b2Fixture* col)
 
 b2Fixture* KE::Collision::GetColliderA()
 {
-	return nullptr;
+	return _colliderA;
 }
 
 b2Fixture* KE::Collision::GetColliderB()
 {
-	return nullptr;
+	return _colliderB;
 }

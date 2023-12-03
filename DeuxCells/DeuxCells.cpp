@@ -12,11 +12,14 @@
 #include <KnightEngine/CText.h>
 #include "Enemy.h"
 #include "EnemySpawner.h"
+#include "KnightEngine/BDDManager.h"
 
 int main()
 {
 	KE::Application* app = new KE::Application();
     app->Open();
+
+	KE::BDDManager::GetDataFromBDD();
 
 	KE::Entity* rect = app->CreateEntity();
 	rect->SetName("rect");
@@ -31,7 +34,7 @@ int main()
 	
 	KE::Entity* score = app->CreateEntity();
 	score->SetName("score");
-	score->setPosition(0, 0);
+	score->setPosition(-10, 120);
 	score->setScale(sf::Vector2f(2.0f, 2.0f));
 
 	KE::CText* textComp = app->AddComponent<KE::CText>(score);
@@ -39,7 +42,8 @@ int main()
 	std::cout << app->GetRessourceManager()->GetAssetPath("fipps") << std::endl;
 	textComp->SetString("Hello");
 	textComp->SetFillColor(sf::Color::White);
-	textComp->SetSize(5);
+	textComp->SetSize(50);
+	score->setScale(sf::Vector2f(0.3f, 0.3f));
 	
 
 	KE::CSpriteRenderer* cSpriteRenderer = app->AddComponent<KE::CSpriteRenderer>(player);

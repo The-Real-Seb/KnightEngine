@@ -193,6 +193,12 @@ KE::CRigidbody* KE::Application::GetRigiBodyComponent(Entity* entity)
 	return GetComponent<KE::CRigidbody>(entity);
 }
 
+KE::CText* KE::Application::GetTextComponent(Entity* entity)
+{
+	std::cout << entity->GetName() << std::endl;
+	return GetComponent<KE::CText>(entity);
+}
+
 KE::RessourceManager* KE::Application::GetRessourceManager()
 {
 	return _ressourceManager;
